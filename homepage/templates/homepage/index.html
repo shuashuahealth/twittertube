@@ -21,8 +21,8 @@
   </head>
 
   <body style="">
-  {% csrf_token %}
     <form enctype="/handlefile" method="POST">
+      {% csrf_token %}
   	  <input type="file" name="file" /><br/>
 	  <input type="submit" value="upload file" />
     </form>
