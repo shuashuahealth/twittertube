@@ -1,12 +1,13 @@
 # Create your views here.
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from cookbooks.models import blog
 from django.core.urlresolvers import reverse
-def index(request):
-    return render(request, 'homepage/index.html', {})
-
 from django import forms
+
+def index(request):
+    #return render(request, 'homepage/index.html', {})
+    return HttpResponse("Hello, world. You're at the poll index.")
+
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
