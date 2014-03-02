@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django import forms
-from .forms import ModelFormWithFileField
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 def index(request):
     return render(request, 'homepage/index.html', {})
@@ -23,8 +24,7 @@ def handlefile(request):
     if request.method == 'POST':
         form = ModelFormWithFileField(request.POST, request.FILES)
         if form.is_valid():
-            # file is saved
-            form.save()
+            path = default_storage.save('text.txt', ContentFile(form.read()))
             return render(request, 'homepage/index.html', {})
     else:
         form = UploadFileForm()
