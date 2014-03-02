@@ -75,6 +75,11 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = ""
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAJKADLVELVEBLGGGQ'
+AWS_SECRET_ACCESS_KEY = 'fFR/GXxdqs5PFobHH5IuMdCi0cdYd3MZGvFrHv+K'
+AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-us-west-2-719818129352'
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -136,6 +141,7 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    homepage,
 )
 
 # A sample logging configuration. The only tangible logging

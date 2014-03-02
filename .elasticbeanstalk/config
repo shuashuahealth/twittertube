@@ -1,5 +1,6 @@
 [global]
 ApplicationName=twittube
+ApplicationVersionName=git-a706a3f3d7edadd5fac6c333bee6d1398b957785-1393721778042
 AwsCredentialFile=C:\Users\ldm\.elasticbeanstalk\aws_credential_file
 DevToolsEndpoint=git.elasticbeanstalk.us-west-2.amazonaws.com
 EnvironmentName=twittube-env
