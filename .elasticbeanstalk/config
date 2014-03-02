@@ -1,7 +1,7 @@
 [global]
 ApplicationName=twittube
 AwsCredentialFile=C:\Users\ldm\.elasticbeanstalk\aws_credential_file
-DevToolsEndpoint=git.elasticbeanstalk.us-east-1.amazonaws.com
+DevToolsEndpoint=git.elasticbeanstalk.us-west-2.amazonaws.com
 EnvironmentName=twittube-env
 EnvironmentTier=WebServer::Standard::1.0
 EnvironmentType=LoadBalanced
@@ -10,7 +10,7 @@ OptionSettingFile=F:\twittube\.elasticbeanstalk\optionsettings.twittube-env
 RdsDeletionPolicy=Delete
 RdsEnabled=Yes
 RdsSourceSnapshotName=
-Region=us-east-1
-ServiceEndpoint=https://elasticbeanstalk.us-east-1.amazonaws.com
-SolutionStack=32bit Amazon Linux 2013.09 running Python 2.7
+Region=us-west-2
+ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
+SolutionStack=64bit Amazon Linux 2013.09 running Python 2.7
 
