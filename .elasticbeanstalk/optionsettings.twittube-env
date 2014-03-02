@@ -20,7 +20,7 @@ VPCId=
 Application Healthcheck URL=
 
 [aws:elasticbeanstalk:application:environment]
-DJANGO_SETTINGS_MODULE=
+DJANGO_SETTINGS_MODULE=twittube.settings
 PARAM1=
 PARAM2=
 PARAM3=
