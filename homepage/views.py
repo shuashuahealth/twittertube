@@ -19,7 +19,6 @@ def handlefile(request):
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            return HttpResponse(request.FILES['file'].content-type)
             default_storage.save('minikey.txt', request.FILES['file'])
             return HttpResponse("upload succeed.")
         else:
