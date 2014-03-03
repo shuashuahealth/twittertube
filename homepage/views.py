@@ -29,4 +29,5 @@ def handlefile(request):
             return HttpResponse("upload succeed.")
     else:
         form = UploadFileForm()
+        reture HttpRresponse("upload else")
     return HttpResponse("upload failed.")
