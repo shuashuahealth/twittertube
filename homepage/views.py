@@ -16,17 +16,17 @@ class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
 def handle_uploaded_file(f):
-    with open('test.txt', 'wb+') as destination:
+    destination = default_storage.open('some/file/name.txt', 'wb+')
         for chunk in f.chunks():
             destination.write(chunk)
+   destination.close()
 
 def handlefile(request):
     if request.method == 'POST':
-        form = ModelFormWithFileField(request.POST, request.FILES)
+        form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            path = default_storage.save('text.txt', ContentFile(form.read()))
-            return render(request, 'homepage/index.html', {})
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponse("upload succeed.")
     else:
         form = UploadFileForm()
-    return render(request, 'homepage/index.html', {})
-
+    return HttpResponse("upload failed.")
