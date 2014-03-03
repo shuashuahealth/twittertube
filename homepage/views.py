@@ -27,7 +27,7 @@ def handlefile(request):
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
             return HttpResponse("upload succeed.")
-        esle
+        else
             return HttpRresponse("upload forminvalid")
     else:
         form = UploadFileForm()
