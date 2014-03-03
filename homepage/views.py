@@ -12,7 +12,6 @@ def index(request):
 
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
     file  = forms.FileField()
 
 def handle_uploaded_file(f):
@@ -24,7 +23,7 @@ def handle_uploaded_file(f):
 def handlefile(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
-        return HttpResponse(request.FILES['file'].read())
+        #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
             return HttpResponse("upload succeed.")
