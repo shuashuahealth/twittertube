@@ -14,18 +14,12 @@ def index(request):
 class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
-def handle_uploaded_file(f):
-    destination = default_storage.open('name.txt', 'wb+')
-    for chunk in f.chunks():
-            destination.write(chunk)
-    destination.close()
-
 def handlefile(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            #handle_uploaded_file(request.FILES['file'])
+            return HttpResponse(request.FILES['file'].content-type)
             default_storage.save('minikey.txt', request.FILES['file'])
             return HttpResponse("upload succeed.")
         else:
