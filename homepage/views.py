@@ -22,6 +22,7 @@ def handle_uploaded_file(f):
     destination.close()
 
 def handlefile(request):
+    return HttpResponse("upload succeed.")
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
