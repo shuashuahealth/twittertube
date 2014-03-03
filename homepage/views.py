@@ -19,7 +19,7 @@ def handle_uploaded_file(f):
     destination = default_storage.open('some/file/name.txt', 'wb+')
         for chunk in f.chunks():
             destination.write(chunk)
-   destination.close()
+    destination.close()
 
 def handlefile(request):
     if request.method == 'POST':
