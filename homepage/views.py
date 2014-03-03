@@ -28,8 +28,8 @@ def handlefile(request):
             handle_uploaded_file(request.FILES['file'])
             return HttpResponse("upload succeed.")
         else:
-            return HttpRresponse("upload forminvalid")
+            return HttpResponse("upload forminvalid")
     else:
         form = UploadFileForm()
-        return HttpRresponse("upload else")
+        return HttpResponse("upload else")
     return HttpResponse("upload failed.")
