@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'conversation',
     'storages',
+    'twittube',
 )
 
 # A sample logging configuration. The only tangible logging
