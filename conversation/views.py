@@ -21,12 +21,12 @@ def index(request, sponsor_id):
 class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
-def handlefile(request, s_id):
+def handlefile(request, sponsor_id):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            s = Sponsor.objects.filter(id=s_id)
+            s = Sponsor.objects.filter(id=sponsor_id)
             p = Participant()
             #uploaded file must be mp4
             filename = str(s.id)+str(s.next_int_num)+'.mp4'
@@ -37,7 +37,7 @@ def handlefile(request, s_id):
             s.save()
             
             default_storage.save(filename, request.FILES['file'])
-            return HttpResponseRedirect(reverse('conversation.views.index'))
+            return HttpResponseRedirect(reverse('conversation.views.index', args=(sponsor_id,)))
         else:
             return HttpResponse("upload forminvalid")
     else:
