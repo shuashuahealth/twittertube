@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'twittube.views.index', name='index'),
     url(r'^handlefile/$', 'twittube.views.handlefile', name='handlefile'),
-    url(r'^(?P<sponsor_id>\d+)', include('conversation.urls')),
+    url(r'^(?P<sponsor_id>\d+)/', include('conversation.urls')),
 )
