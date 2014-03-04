@@ -10,6 +10,8 @@ from homepage.models import Participant
 
 def index(request):
     all_sponsors = Sponsor.objects.all()
+    for s in all_sponsors:
+    	s.delete()
     return render(request, 'homepage/index.html', {'all_s':all_sponsors})
     #return HttpResponse("Hello, world. You're at the poll index.")
 
