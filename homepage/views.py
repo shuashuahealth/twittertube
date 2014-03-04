@@ -24,7 +24,7 @@ def handlefile(request):
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
             s = Sponsor()
-   	     filename = string(s.id)+'_0.mp4'
+            filename = string(s.id)+'_0.mp4'
             s.save()
             default_storage.save(filename, request.FILES['file'])
             return HttpResponse("upload succeed.")
