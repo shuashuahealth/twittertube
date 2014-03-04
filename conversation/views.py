@@ -43,5 +43,4 @@ def handlefile(request, sponsor_id):
             return HttpResponse("upload forminvalid")
     else:
         form = UploadFileForm()
-        return HttpResponse("upload else")
-    return HttpResponse("upload failed.")
+    return HttpResponse("return conversation<a href='/%s/'>%s</a>\n" %sponsor_id %sponsor_id)
