@@ -28,7 +28,7 @@ def handlefile(request):
             s.filename = filename
             s.save()
             default_storage.save(filename, request.FILES['file'])
-                return HttpResponseRedirect(reverse('homepage.views.index'))
+            return HttpResponseRedirect(reverse('homepage.views.index'))
         else:
             return HttpResponse("upload forminvalid")
     else:
