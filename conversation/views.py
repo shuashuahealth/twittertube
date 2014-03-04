@@ -14,8 +14,6 @@ from conversation.models import Participant
 def index(request, sponsor_id):
     s = Sponsor.objects.get(pk=sponsor_id)
     all_participants = Participant.objects.filter(sponsor=s)
-    for p in all_participants:
-    	p.delete()
     return render(request, 'conversation/index.html', {'s':s, 'all_p':all_participants})
     #return HttpResponse("Hello, world. You're at the index.")
 
