@@ -2,7 +2,7 @@ from django.db import models
 import sys
 sys.path.append( '..' )
 from twittube.models import Sponsor
-
+as=Sponsor.objects.all()
 class Participant(models.Model):
 	sponsor = models.ForeignKey(Sponsor)
 	internal_num = models.IntegerField(default = 0)
