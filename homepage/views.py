@@ -23,9 +23,11 @@ def handlefile(request):
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
             s = Sponsor()
-            #filename = str(s.id)+'_0.mp4'
-            #s.save()
-            #default_storage.save(filename, request.FILES['file'])
+            s.save()
+            filename = str(s.id)+'_0.mp4'
+            s.filename = filename
+            s.save()
+            default_storage.save(filename, request.FILES['file'])
             return HttpResponse("s.id:"+str(s.id))
         else:
             return HttpResponse("upload forminvalid")
