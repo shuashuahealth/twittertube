@@ -38,7 +38,7 @@ def handlefile(request, sponsor_id):
             s.save()
             
             default_storage.save(filename, request.FILES['file'])
-            return HttpResponseRedirect('/%d/' %sponsor_id)
+            return HttpResponseRedirect('/%s/' %sponsor_id)
         else:
             return HttpResponse("upload forminvalid")
     else:
