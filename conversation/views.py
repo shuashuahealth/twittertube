@@ -30,11 +30,12 @@ def handlefile(request, sponsor_id):
             p = Participant()
             #uploaded file must be mp4
             filename = str(s.id)+'_'+str(s.next_int_num)+'.mp4'
+            p.sponsor = s
             p.internal_num = s.next_int_num
             p.filename = filename
+            p.save()
             s.next_int_num += 1
             s.save()
-            p.save()
             
             default_storage.save(filename, request.FILES['file'])
             return HttpResponseRedirect('/{{sponsor_id}}/')
