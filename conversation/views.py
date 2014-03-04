@@ -26,7 +26,7 @@ def handlefile(request, sponsor_id):
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            s = Sponsor.objects.filter(id=sponsor_id)
+            s = Sponsor.objects.get(pk=sponsor_id)
             p = Participant()
             #uploaded file must be mp4
             filename = str(s.id)+str(s.next_int_num)+'.mp4'
