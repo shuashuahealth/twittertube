@@ -14,5 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^home/', include('homepage.urls')),
+    url(r'^$', 'twittube.views.index', name='index')
+    url(r'^handlefile/$', 'twittube.views.handlefile', name='handlefile')
+    url(r'^(?P<sponsor_id>\d+)/', include('conversation.urls')),
 )

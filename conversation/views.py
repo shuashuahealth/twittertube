@@ -5,30 +5,36 @@ from django.core.urlresolvers import reverse
 from django import forms
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-from homepage.models import Sponsor
-from homepage.models import Participant
+from twittube.models import Sponsor
+from conversation.models import Participant
 
-def index(request):
-    all_sponsors = Sponsor.objects.all()
-    return render(request, 'homepage/index.html', {'all_s':all_sponsors})
-    #return HttpResponse("Hello, world. You're at the poll index.")
+def index(request, s_id):
+    s = Sponsor.objects.objects.filter(id=s_id)
+    all_participants = Participant.objects.filter(sponsor=s)
+    return render(request, 'conversation/index.html', {'s':s, 'all_p':all_participants})
+    #return HttpResponse("Hello, world. You're at the index.")
 
 
 class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
-def handlefile(request):
+def handlefile(request, s_id):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            s = Sponsor()
+            s = Sponsor.objects.filter(id=s_id)
+            p = Participant()
+            #uploaded file must be mp4
+            filename = str(s.id)+str(s.next_int_num)+'.mp4'
+            p.internal_num = s.next_int_num
+            p.filename = filename
+            p.save()
+            s.next_int_num += 1
             s.save()
-            filename = str(s.id)+'_0.mp4'
-            s.filename = filename
-            s.save()
+            
             default_storage.save(filename, request.FILES['file'])
-            return HttpResponseRedirect(reverse('homepage.views.index'))
+            return HttpResponseRedirect(reverse('conversation.views.index'))
         else:
             return HttpResponse("upload forminvalid")
     else:
