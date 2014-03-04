@@ -26,7 +26,10 @@
   	  <input type="file" name="file" /><br/>
 	  <input type="submit" value="upload file" />
     </form>
-    <video name='demo' controls width='20%' height='15%'>
-	<source src="http://d2crtr3mlev64q.cloudfront.net/iceage4.mp4" type="video/mp4"></source>
-	</video>
+    {% for s in all_s %}
+        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+        <video name='demo' controls width='20%' height='15%'>
+		<source src="http://d2crtr3mlev64q.cloudfront.net/{{s.filename}}" type="video/mp4"></source>
+		</video>
+    {% endfor %} 
 </body></html>

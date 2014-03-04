@@ -5,9 +5,12 @@ from django.core.urlresolvers import reverse
 from django import forms
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+from homepage.models import Sponsor
+from homepage.models import Participant
 
 def index(request):
-    return render(request, 'homepage/index.html', {})
+    all_sponsors = Sponsor.objects.all()
+    return render(request, 'homepage/index.html', {'all_s':all_sponsors})
     #return HttpResponse("Hello, world. You're at the poll index.")
 
 
@@ -15,11 +18,15 @@ class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
 def handlefile(request):
+
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
-            default_storage.save('minikey.txt', request.FILES['file'])
+            s = Sponsor()
+   	     filename = string(s.id)+'_0.mp4'
+            s.save()
+            default_storage.save(filename, request.FILES['file'])
             return HttpResponse("upload succeed.")
         else:
             return HttpResponse("upload forminvalid")
