@@ -37,7 +37,7 @@ def handlefile(request, sponsor_id):
             s.save()
             
             default_storage.save(filename, request.FILES['file'])
-            return HttpResponseRedirect(reverse('conversation.views.index', args=(sponsor_id,)))
+            return HttpResponseRedirect('/{{sponsor_id}}/')
         else:
             return HttpResponse("upload forminvalid")
     else:
