@@ -18,16 +18,15 @@ class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
 def handlefile(request):
-
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         #return HttpResponse(request.FILES['file'].read())
         if form.is_valid():
             s = Sponsor()
-            filename = str(s.id)+'_0.mp4'
-            s.save()
-            default_storage.save(filename, request.FILES['file'])
-            return HttpResponse("upload succeed.")
+            #filename = str(s.id)+'_0.mp4'
+            #s.save()
+            #default_storage.save(filename, request.FILES['file'])
+            return HttpResponse("s.id:"+str(s.id))
         else:
             return HttpResponse("upload forminvalid")
     else:
